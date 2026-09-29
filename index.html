@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>AI Flower Classifier</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #eaffea;
+      text-align: center;
+      padding: 40px;
+    }
+
+    .box {
+      max-width: 450px;
+      margin: auto;
+      background: white;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 5px 20px #aaa;
+    }
+
+    input {
+      width: 90%;
+      padding: 12px;
+      margin: 7px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+
+    button {
+      width: 95%;
+      padding: 14px;
+      margin-top: 15px;
+      background: #28a745;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 17px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #218838;
+    }
+
+    #result {
+      margin-top: 20px;
+      font-size: 22px;
+      font-weight: bold;
+      color: #198754;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="box">
+
+  <h1>🌸 AI Flower Classifier</h1>
+
+  <p>Enter the flower measurements</p>
+
+  <input id="sl" type="number" step="0.1"
+         placeholder="Sepal Length">
+
+  <input id="sw" type="number" step="0.1"
+         placeholder="Sepal Width">
+
+  <input id="pl" type="number" step="0.1"
+         placeholder="Petal Length">
+
+  <input id="pw" type="number" step="0.1"
+         placeholder="Petal Width">
+
+  <button onclick="predict()">🤖 Predict Flower</button>
+
+  <div id="result"></div>
+
+</div>
+
+<script>
+
+function predict() {
+
+  const sl = Number(document.getElementById("sl").value);
+  const sw = Number(document.getElementById("sw").value);
+  const pl = Number(document.getElementById("pl").value);
+  const pw = Number(document.getElementById("pw").value);
+
+  if (!sl || !sw || !pl || !pw) {
+    document.getElementById("result").innerText =
+      "Please enter all measurements.";
+    return;
+  }
+
+  let flower;
+
+  /*
+    Simple Iris AI-style classifier
+  */
+
+  if (pw < 0.8 && pl < 2.5) {
+    flower = "🌸 Iris Setosa";
+  }
+  else if (pw < 1.8 && pl < 5.0) {
+    flower = "🌺 Iris Versicolor";
+  }
+  else {
+    flower = "🌷 Iris Virginica";
+  }
+
+  document.getElementById("result").innerText =
+    "Prediction: " + flower;
+}
+
+</script>
+
+</body>
+</html>
